@@ -6,6 +6,7 @@ import { Order } from "../entities/Order";
 import { Category } from "../entities/Category";
 import { Product } from "../entities/Product";
 
+
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: DB_HOST,
@@ -16,6 +17,11 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   dropSchema: false,
   logging: false,
+
+  ssl: {
+  rejectUnauthorized: false,
+},
+
   entities: [User, Credential, Order, Product, Category],
   subscribers: [],
   migrations: [],
